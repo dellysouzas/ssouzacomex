@@ -10,6 +10,10 @@
   body {
     @apply bg-white text-primary-500;
   }
+
+  :root {
+    --custom-blue: #4699d3;
+  }
 }
 
 @layer components {
@@ -75,5 +79,22 @@
 
   .btn-modern svg {
     @apply w-4 h-4 transform transition-all duration-500 group-hover/btn:rotate-180 group-hover/btn:scale-110 relative z-10;
+  }
+
+  /* Elementos com cor personalizada */
+  .custom-blue {
+    color: var(--custom-blue);
+  }
+  
+  .custom-blue-bg {
+    background-color: var(--custom-blue);
+  }
+  
+  .custom-blue-border {
+    border-color: var(--custom-blue);
+  }
+  
+  .custom-blue-shadow {
+    box-shadow: 0 10px 25px -3px rgba(70, 153, 211, 0.3);
   }
 }

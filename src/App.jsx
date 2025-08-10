@@ -3,6 +3,91 @@ import './fonts.css'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  
+  // Estado do formulário wizard
+  const [currentStep, setCurrentStep] = useState(1)
+  const totalSteps = 5
+  
+  // Lista de serviços disponíveis
+  const services = [
+    { id: 'desembaraço-com-due', name: 'Desembaraço Aduaneiro com emissão de DUE' },
+    { id: 'desembaraço-sem-due', name: 'Desembaraço Aduaneiro sem emissão de DUE' },
+    { id: 'exportacao-temporaria', name: 'Exportação Temporária' },
+    { id: 'handling', name: 'Handling' },
+    { id: 'frete-aereo', name: 'Frete Aéreo Internacional' },
+    { id: 'frete-rodoviario', name: 'Frete Rodoviário Internacional' },
+    { id: 'frete-maritimo', name: 'Frete Marítimo Internacional' },
+    { id: 'drawback', name: 'Drawback' },
+    { id: 'admissao-temporaria', name: 'Admissão Temporária' }
+  ]
+  
+  // Estado do formulário
+  const [formData, setFormData] = useState({
+    companyName: '',
+    cnpj: '',
+    contactName: '',
+    email: '',
+    phone: '',
+    city: '',
+    selectedServices: [],
+    additionalServices: '',
+    operationType: '',
+    frequency: '',
+    products: '',
+    destinations: '',
+    challenges: '',
+    budget: '',
+    timeline: '',
+    source: '',
+    observations: ''
+  })
+  
+  // Função para verificar se pode prosseguir
+  const canProceed = () => {
+    switch (currentStep) {
+      case 1:
+        return formData.companyName && formData.cnpj && formData.contactName && formData.email && formData.phone && formData.city
+      case 2:
+        return formData.selectedServices.length > 0
+      case 3:
+        return formData.operationType && formData.frequency && formData.products && formData.destinations
+      case 4:
+        return formData.budget && formData.timeline
+      case 5:
+        return true
+      default:
+        return false
+    }
+  }
+  
+  // Função para enviar o formulário
+  const handleSubmit = () => {
+    // Aqui você pode implementar a lógica para enviar os dados
+    console.log('Dados do formulário:', formData)
+    alert('Solicitação enviada com sucesso! Em até 24 horas entraremos em contato.')
+    
+    // Reset do formulário
+    setFormData({
+      companyName: '',
+      cnpj: '',
+      contactName: '',
+      email: '',
+      phone: '',
+      city: '',
+      selectedServices: [],
+      additionalServices: '',
+      operationType: '',
+      frequency: '',
+      products: '',
+      destinations: '',
+      challenges: '',
+      budget: '',
+      timeline: '',
+      source: '',
+      observations: ''
+    })
+    setCurrentStep(1)
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -17,7 +102,7 @@ function App() {
               </div>
       <div>
                 <h1 className="text-2xl font-bold text-primary-500">Souza Comex</h1>
-                <p className="text-sm text-primary-400 font-medium">Comércio Exterior</p>
+                <p className="text-sm custom-blue font-medium">Comércio Exterior</p>
               </div>
             </div>
 
@@ -107,7 +192,7 @@ function App() {
                       documento
                     </span>
                     <span className="text-primary-600"> ao </span>
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-800 font-bold">
+                    <span className="custom-blue font-bold">
                       destino
                     </span>
                   </h2>
@@ -131,8 +216,8 @@ function App() {
                          </button>
                          
                          <button className="group relative overflow-hidden bg-white text-primary-600 font-semibold text-base px-6 py-3 rounded-xl shadow-lg border-2 border-primary-200 hover:border-primary-300 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                           <div className="absolute inset-0 bg-primary-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                           <span className="relative flex items-center gap-2">
+                           <div className="absolute inset-0 custom-blue-bg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                           <span className="relative flex items-center gap-2 group-hover:text-white transition-colors duration-300">
                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                              </svg>
@@ -596,44 +681,699 @@ function App() {
                </section>
 
         {/* Seção 4: Diferenciais */}
-        <section id="diferenciais" className="section-padding bg-white">
+        <section id="diferenciais" className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50">
           <div className="container-custom">
-            <div className="text-center">
-              <h2 className="text-5xl md:text-7xl font-bold text-primary-500 mb-8">
-                Diferenciais
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-7xl font-bold text-primary-500 mb-6">
+                Porque nos escolher?
               </h2>
-              <p className="text-xl text-primary-600 max-w-3xl mx-auto">
-                Conteúdo da seção Diferenciais será adicionado aqui
+              <p className="text-xl text-primary-600 max-w-4xl mx-auto leading-relaxed">
+                Nossa <span className="custom-blue font-semibold">expertise</span> e compromisso fazem a diferença em cada operação de comércio exterior
               </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {/* Diferencial 1: Atendimento Personalizado */}
+              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-primary-600 mb-4 text-center">
+                  Atendimento Personalizado
+                </h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Atendimento direto e personalizado com uma profissional experiente, sem intermediários.
+                </p>
+              </div>
+
+              {/* Diferencial 2: Agilidade */}
+              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 hover:custom-blue-shadow">
+                <div className="w-16 h-16 custom-blue-bg rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold custom-blue mb-4 text-center">
+                  Agilidade nos Prazos
+                </h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Compromisso com prazos e rapidez na execução de todas as operações.
+                </p>
+              </div>
+
+              {/* Diferencial 3: Experiência */}
+              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-primary-600 mb-4 text-center">
+                  Experiência de Mercado
+                </h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Conhecimento prático e experiência com diferentes mercados internacionais.
+                </p>
+              </div>
+
+              {/* Diferencial 4: Facilidade */}
+              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 hover:custom-blue-shadow">
+                <div className="w-16 h-16 custom-blue-bg rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold custom-blue mb-4 text-center">
+                  Processo Simplificado
+                </h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Facilidade no processo burocrático, tornando o comércio exterior mais acessível.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Seção 5: Depoimentos */}
-        <section id="depoimentos" className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+        <section id="depoimentos" className="section-padding bg-gradient-to-br from-secondary-50 via-white to-primary-50">
           <div className="container-custom">
-            <div className="text-center">
-              <h2 className="text-5xl md:text-7xl font-bold text-primary-500 mb-8">
-                Depoimentos
+            {/* Chamada Atraente */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-3 bg-primary-100 text-primary-700 px-6 py-3 rounded-full text-sm font-semibold mb-6">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                </svg>
+                Histórias de sucesso
+              </div>
+              <h2 className="text-5xl md:text-7xl font-bold text-primary-500 mb-6">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-800">
+                  O que nossos clientes dizem
+                </span>
               </h2>
-              <p className="text-xl text-primary-600 max-w-3xl mx-auto">
-                Conteúdo da seção Depoimentos será adicionado aqui
+              <p className="text-xl text-primary-600 max-w-3xl mx-auto leading-relaxed">
+                <span className="font-bold text-primary-700">Confiança</span> e <span className="font-bold text-primary-700">resultados</span> que falam por si mesmos
               </p>
+            </div>
+
+            {/* Grid de Depoimentos */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Depoimento 1 */}
+              <div className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden transform hover:-translate-y-2">
+                <div className="p-8">
+                  {/* Avaliação com estrelas */}
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    ))}
+                  </div>
+                  
+                  {/* Texto do depoimento */}
+                  <blockquote className="text-gray-700 text-lg leading-relaxed mb-6 italic">
+                    "A Souza Comex transformou completamente nossa experiência de exportação. A agilidade e profissionalismo da equipe nos permitiu expandir para novos mercados com total confiança. O follow-up personalizado faz toda a diferença!"
+                  </blockquote>
+                  
+                  {/* Informações do cliente */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">M</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-primary-600">Marcelo Silva</h4>
+                      <p className="text-sm text-gray-500">Diretor Comercial</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Depoimento 2 */}
+              <div className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden transform hover:-translate-y-2">
+                <div className="p-8">
+                  {/* Avaliação com estrelas */}
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    ))}
+                  </div>
+                  
+                  {/* Texto do depoimento */}
+                  <blockquote className="text-gray-700 text-lg leading-relaxed mb-6 italic">
+                    "Após 15 anos no mercado, posso dizer que a Souza Comex é uma das empresas mais competentes que já trabalhei. A experiência da Silvana e a maturidade no segmento são evidentes em cada operação. Recomendo sem hesitar!"
+                  </blockquote>
+                  
+                  {/* Informações do cliente */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">A</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-primary-600">Ana Costa</h4>
+                      <p className="text-sm text-gray-500">Gerente de Logística</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Depoimento 3 */}
+              <div className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden transform hover:-translate-y-2">
+                <div className="p-8">
+                  {/* Avaliação com estrelas */}
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    ))}
+                  </div>
+                  
+                  {/* Texto do depoimento */}
+                  <blockquote className="text-gray-700 text-lg leading-relaxed mb-6 italic">
+                    "Como empresa que começou pequena, precisávamos de um parceiro que entendesse nossas necessidades. A Souza Comex não só entendeu, como superou todas as expectativas. Processos desburocratizados e resultados excepcionais!"
+                  </blockquote>
+                  
+                  {/* Informações do cliente */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">R</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-primary-600">Roberto Mendes</h4>
+                      <p className="text-sm text-gray-500">CEO</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA após depoimentos */}
+            <div className="text-center mt-16">
+              <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-3xl p-8 shadow-2xl">
+                <h3 className="text-3xl font-bold text-white mb-4">
+                  Faça parte da nossa história de sucesso
+                </h3>
+                <p className="text-primary-100 text-lg mb-6 max-w-2xl mx-auto">
+                  Junte-se aos clientes que já transformaram suas operações de comércio exterior com a Souza Comex
+                </p>
+                <button className="group relative overflow-hidden bg-white text-primary-600 font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-white/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                  <div className="absolute inset-0 bg-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative flex items-center gap-3">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                    Solicitar Orçamento
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Seção 6: Contato */}
-        <section id="contato" className="section-padding bg-white">
+        <section id="contato" className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50">
           <div className="container-custom">
-            <div className="text-center">
-              <h2 className="text-5xl md:text-7xl font-bold text-primary-500 mb-8">
-                Contato
+            {/* Chamada Atraente */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-3 bg-primary-100 text-primary-700 px-6 py-3 rounded-full text-sm font-semibold mb-6">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                Orçamento personalizado
+              </div>
+              <h2 className="text-5xl md:text-7xl font-bold text-primary-500 mb-6">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-800">
+                  Acelere seu crescimento global
+                </span>
               </h2>
-              <p className="text-xl text-primary-600 max-w-3xl mx-auto">
-                Conteúdo da seção Contato será adicionado aqui
-        </p>
-      </div>
+              <p className="text-xl text-primary-600 max-w-3xl mx-auto leading-relaxed">
+                <span className="font-bold text-primary-700">Solicite um orçamento personalizado</span> e descubra como podemos 
+                otimizar suas operações de comércio exterior
+              </p>
+            </div>
+
+            {/* Formulário Wizard */}
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                {/* Header do Formulário */}
+                <div className="bg-gradient-to-r from-primary-500 to-primary-600 p-8 text-white text-center">
+                  <h3 className="text-3xl font-bold mb-4">Vamos nos conhecer</h3>
+                  <p className="text-primary-100 text-lg">
+                    Preencha as informações abaixo para receber um orçamento personalizado
+                  </p>
+                </div>
+
+                {/* Progress Bar */}
+                <div className="bg-gray-100 p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-gray-600">Progresso</span>
+                    <span className="text-sm font-medium text-primary-600">{Math.round((currentStep / totalSteps) * 100)}%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div 
+                      className="bg-gradient-to-r from-primary-500 to-primary-600 h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+                    ></div>
+                  </div>
+                </div>
+
+                {/* Formulário Wizard */}
+                <div className="p-8">
+                  {/* Etapa 1: Informações Básicas */}
+                  {currentStep === 1 && (
+                    <div className="space-y-6">
+                      <div className="text-center mb-8">
+                        <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <span className="text-2xl font-bold text-primary-600">1</span>
+                        </div>
+                        <h4 className="text-2xl font-bold text-primary-600 mb-2">Informações Básicas</h4>
+                        <p className="text-gray-600">Comece nos contando sobre sua empresa</p>
+                      </div>
+                      
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Nome da Empresa *
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.companyName}
+                            onChange={(e) => setFormData({...formData, companyName: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                            placeholder="Digite o nome da sua empresa"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            CNPJ *
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.cnpj}
+                            onChange={(e) => setFormData({...formData, cnpj: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                            placeholder="00.000.000/0000-00"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Nome do Responsável *
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.contactName}
+                            onChange={(e) => setFormData({...formData, contactName: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                            placeholder="Seu nome completo"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Email *
+                          </label>
+                          <input
+                            type="email"
+                            value={formData.email}
+                            onChange={(e) => setFormData({...formData, email: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                            placeholder="seu@email.com"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Telefone *
+                          </label>
+                          <input
+                            type="tel"
+                            value={formData.phone}
+                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                            placeholder="(11) 99999-9999"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Cidade/Estado *
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.city}
+                            onChange={(e) => setFormData({...formData, city: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                            placeholder="São Paulo, SP"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Etapa 2: Serviços Desejados */}
+                  {currentStep === 2 && (
+                    <div className="space-y-6">
+                      <div className="text-center mb-8">
+                        <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <span className="text-2xl font-bold text-primary-600">2</span>
+                        </div>
+                        <h4 className="text-2xl font-bold text-primary-600 mb-2">Serviços Desejados</h4>
+                        <p className="text-gray-600">Selecione quais serviços você gostaria de contratar</p>
+                      </div>
+                      
+                      <div className="grid md:grid-cols-2 gap-4">
+                        {services.map((service, index) => (
+                          <label key={index} className="flex items-center p-4 border border-gray-200 rounded-xl cursor-pointer hover:border-primary-300 transition-all duration-300">
+                            <input
+                              type="checkbox"
+                              checked={formData.selectedServices.includes(service.id)}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  setFormData({
+                                    ...formData, 
+                                    selectedServices: [...formData.selectedServices, service.id]
+                                  });
+                                } else {
+                                  setFormData({
+                                    ...formData, 
+                                    selectedServices: formData.selectedServices.filter(id => id !== service.id)
+                                  });
+                                }
+                              }}
+                              className="w-5 h-5 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                            />
+                            <span className="ml-3 text-gray-700 font-medium">{service.name}</span>
+                          </label>
+                        ))}
+                      </div>
+                      
+                      <div className="mt-6">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Outros serviços ou necessidades específicas
+                        </label>
+                        <textarea
+                          value={formData.additionalServices}
+                          onChange={(e) => setFormData({...formData, additionalServices: e.target.value})}
+                          rows="3"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                          placeholder="Descreva outros serviços ou necessidades específicas..."
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Etapa 3: Detalhes da Operação */}
+                  {currentStep === 3 && (
+                    <div className="space-y-6">
+                      <div className="text-center mb-8">
+                        <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <span className="text-2xl font-bold text-primary-600">3</span>
+                        </div>
+                        <h4 className="text-2xl font-bold text-primary-600 mb-2">Detalhes da Operação</h4>
+                        <p className="text-gray-600">Nos conte mais sobre suas necessidades</p>
+                      </div>
+                      
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Tipo de Operação *
+                          </label>
+                          <select
+                            value={formData.operationType}
+                            onChange={(e) => setFormData({...formData, operationType: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                          >
+                            <option value="">Selecione uma opção</option>
+                            <option value="exportacao">Exportação</option>
+                            <option value="importacao">Importação</option>
+                            <option value="ambos">Ambos</option>
+                          </select>
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Frequência de Operações *
+                          </label>
+                          <select
+                            value={formData.frequency}
+                            onChange={(e) => setFormData({...formData, frequency: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                          >
+                            <option value="">Selecione uma opção</option>
+                            <option value="primeira-vez">Primeira vez</option>
+                            <option value="ocasional">Ocasional (2-3x por ano)</option>
+                            <option value="regular">Regular (mensal)</option>
+                            <option value="intensivo">Intensivo (semanal)</option>
+                          </select>
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Principais Produtos *
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.products}
+                            onChange={(e) => setFormData({...formData, products: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                            placeholder="Ex: Máquinas, eletrônicos, têxteis..."
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Principais Destinos/Origem *
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.destinations}
+                            onChange={(e) => setFormData({...formData, destinations: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                            placeholder="Ex: EUA, Europa, Ásia..."
+                          />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Descreva sua operação atual e desafios
+                        </label>
+                        <textarea
+                          value={formData.challenges}
+                          onChange={(e) => setFormData({...formData, challenges: e.target.value})}
+                          rows="4"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                          placeholder="Conte-nos sobre sua operação atual, desafios enfrentados e como podemos ajudar..."
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Etapa 4: Orçamento e Prazo */}
+                  {currentStep === 4 && (
+                    <div className="space-y-6">
+                      <div className="text-center mb-8">
+                        <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <span className="text-2xl font-bold text-primary-600">4</span>
+                        </div>
+                        <h4 className="text-2xl font-bold text-primary-600 mb-2">Orçamento e Prazo</h4>
+                        <p className="text-gray-600">Últimas informações para personalizar sua proposta</p>
+                      </div>
+                      
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Orçamento Mensal Estimado *
+                          </label>
+                          <select
+                            value={formData.budget}
+                            onChange={(e) => setFormData({...formData, budget: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                          >
+                            <option value="">Selecione uma opção</option>
+                            <option value="ate-10k">Até R$ 10.000</option>
+                            <option value="10k-50k">R$ 10.000 - R$ 50.000</option>
+                            <option value="50k-100k">R$ 50.000 - R$ 100.000</option>
+                            <option value="100k-500k">R$ 100.000 - R$ 500.000</option>
+                            <option value="acima-500k">Acima de R$ 500.000</option>
+                          </select>
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Prazo para Início *
+                          </label>
+                          <select
+                            value={formData.timeline}
+                            onChange={(e) => setFormData({...formData, timeline: e.target.value})}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                          >
+                            <option value="">Selecione uma opção</option>
+                            <option value="imediato">Imediato</option>
+                            <option value="1-mes">1 mês</option>
+                            <option value="3-meses">3 meses</option>
+                            <option value="6-meses">6 meses</option>
+                            <option value="sem-pressa">Sem pressa</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Como conheceu a Souza Comex?
+                        </label>
+                        <select
+                          value={formData.source}
+                          onChange={(e) => setFormData({...formData, source: e.target.value})}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                        >
+                          <option value="">Selecione uma opção</option>
+                          <option value="google">Google</option>
+                          <option value="linkedin">LinkedIn</option>
+                          <option value="indicacao">Indicação</option>
+                          <option value="redes-sociais">Redes Sociais</option>
+                          <option value="outro">Outro</option>
+                        </select>
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Observações adicionais
+                        </label>
+                        <textarea
+                          value={formData.observations}
+                          onChange={(e) => setFormData({...formData, observations: e.target.value})}
+                          rows="3"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                          placeholder="Alguma informação adicional que gostaria de compartilhar..."
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Etapa 5: Confirmação */}
+                  {currentStep === 5 && (
+                    <div className="space-y-6">
+                      <div className="text-center mb-8">
+                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <h4 className="text-2xl font-bold text-green-600 mb-2">Confirme suas Informações</h4>
+                        <p className="text-gray-600">Revise os dados antes de enviar</p>
+                      </div>
+                      
+                      <div className="bg-gray-50 rounded-xl p-6 space-y-4">
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div>
+                            <h5 className="font-semibold text-gray-700 mb-2">Empresa</h5>
+                            <p className="text-gray-600">{formData.companyName}</p>
+                            <p className="text-gray-600">{formData.cnpj}</p>
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-gray-700 mb-2">Contato</h5>
+                            <p className="text-gray-600">{formData.contactName}</p>
+                            <p className="text-gray-600">{formData.email}</p>
+                            <p className="text-gray-600">{formData.phone}</p>
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <h5 className="font-semibold text-gray-700 mb-2">Serviços Selecionados</h5>
+                          <div className="flex flex-wrap gap-2">
+                            {formData.selectedServices.map(serviceId => {
+                              const service = services.find(s => s.id === serviceId);
+                              return service ? (
+                                <span key={serviceId} className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">
+                                  {service.name}
+                                </span>
+                              ) : null;
+                            })}
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <h5 className="font-semibold text-gray-700 mb-2">Operação</h5>
+                          <p className="text-gray-600">Tipo: {formData.operationType}</p>
+                          <p className="text-gray-600">Frequência: {formData.frequency}</p>
+                          <p className="text-gray-600">Produtos: {formData.products}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                        <div className="flex items-start gap-3">
+                          <svg className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <div>
+                            <h5 className="font-semibold text-blue-800 mb-1">O que acontece depois?</h5>
+                            <p className="text-blue-700 text-sm">
+                              Em até 24 horas, nossa equipe entrará em contato para agendar uma reunião personalizada 
+                              e apresentar sua proposta comercial sob medida.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Navegação do Wizard */}
+                  <div className="flex justify-between items-center pt-8 border-t border-gray-200">
+                    {currentStep > 1 && (
+                      <button
+                        onClick={() => setCurrentStep(currentStep - 1)}
+                        className="flex items-center gap-2 px-6 py-3 text-gray-600 hover:text-primary-600 transition-colors duration-300"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Voltar
+                      </button>
+                    )}
+                    
+                    <div className="ml-auto">
+                      {currentStep < totalSteps ? (
+                        <button
+                          onClick={() => setCurrentStep(currentStep + 1)}
+                          disabled={!canProceed()}
+                          className="group relative overflow-hidden bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-primary-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <span className="relative flex items-center gap-3">
+                            Continuar
+                            <svg className="w-6 h-6 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </span>
+                        </button>
+                      ) : (
+                        <button
+                          onClick={handleSubmit}
+                          disabled={!canProceed()}
+                          className="group relative overflow-hidden bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <span className="relative flex items-center gap-3">
+                            Enviar Informações
+                            <svg className="w-6 h-6 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                            </svg>
+                          </span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
           </div>
         </section>
       </main>
