@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    font-family: 'Inter', system-ui, sans-serif;
-  }
+       @layer base {
+         html {
+           font-family: 'Satoshi', 'Inter', system-ui, sans-serif;
+         }
   
   body {
     @apply bg-white text-primary-500;
@@ -18,7 +18,7 @@
   }
   
   .btn-secondary {
-    @apply bg-secondary-400 hover:bg-secondary-500 text-primary-500 font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-primary-500;
+    @apply bg-secondary-400 hover:bg-secondary-500 text-primary-500 font-medium py-3 px-6 rounded-lg transition-shadow duration-300 border border-primary-500;
   }
   
   .card {
@@ -31,5 +31,49 @@
   
   .container-custom {
     @apply max-w-7xl mx-auto;
+  }
+
+  /* Padronização dos ícones dos cards de serviços */
+  .service-icon-container {
+    @apply w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-lg;
+    flex-shrink: 0; /* Impede que o container seja comprimido */
+    min-width: 4rem; /* 4rem = 64px = w-16 */
+    min-height: 4rem; /* 4rem = 64px = h-16 */
+    max-width: 4rem; /* 4rem = 64px = w-16 */
+    max-height: 4rem; /* 4rem = 64px = h-16 */
+  }
+  
+  .service-icon {
+    @apply w-8 h-8 text-white;
+  }
+  
+  .service-icon svg {
+    @apply w-8 h-8 text-white;
+    min-width: 2rem;
+    min-height: 2rem;
+    max-width: 2rem;
+    max-height: 2rem;
+  }
+
+  /* Botão moderno "Ver quando contratar" */
+  .btn-modern {
+    @apply bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 text-white font-semibold py-3 px-5 rounded-xl hover:from-primary-600 hover:via-primary-700 hover:to-primary-800 transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-0.5 shadow-lg hover:shadow-xl hover:shadow-primary-500/25 flex items-center gap-2 relative overflow-hidden;
+  }
+
+  .btn-modern::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 transform -skew-x-12 -translate-x-full transition-transform duration-700;
+  }
+
+  .btn-modern:hover::before {
+    @apply translate-x-full;
+  }
+
+  .btn-modern span {
+    @apply relative z-10;
+  }
+
+  .btn-modern svg {
+    @apply w-4 h-4 transform transition-all duration-500 group-hover/btn:rotate-180 group-hover/btn:scale-110 relative z-10;
   }
 }

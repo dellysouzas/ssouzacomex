@@ -35,9 +35,9 @@ export default {
         },
         white: '#ffffff',
       },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-      },
+                   fontFamily: {
+               sans: ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
+             },
     },
   },
   plugins: [],
