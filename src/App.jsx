@@ -1586,7 +1586,7 @@ function App() {
                   <div>
                     <p className="font-medium">Endereço</p>
                     <p>Rua Gonçalves Dias, 179, Apt 504</p>
-                    <p>Recife - PE, 50020-060</p>
+                    <p>Recife - PE, 52031-040</p>
                   </div>
                 </div>
                 
@@ -1614,10 +1614,10 @@ function App() {
                   <div>
                     <p className="font-medium">Email</p>
                     <a 
-                      href="mailto:contato@souzacomex.com.br" 
+                      href="mailto:snascimento_exportacao@yahoo.com" 
                       className="hover:text-white transition-colors duration-300"
                     >
-                      contato@souzacomex.com.br
+                      snascimento_exportacao@yahoo.com
                     </a>
                   </div>
                 </div>
