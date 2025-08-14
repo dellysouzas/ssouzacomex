@@ -204,7 +204,8 @@ function App() {
                   Agilidade, follow-up personalizado e maturidade no segmento.
                 </p>
                 
-                                       <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                                       {/* CTAs - Desktop */}
+                                       <div className="hidden md:flex flex-col sm:flex-row gap-4 pt-6">
                          <button className="group relative overflow-hidden bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold text-base px-6 py-3 rounded-xl shadow-lg hover:shadow-primary-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
                            <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                            <span className="relative flex items-center gap-2">
@@ -223,7 +224,64 @@ function App() {
                              </svg>
                              Conheça nossos serviços
                            </span>
-        </button>
+                         </button>
+                       </div>
+
+                       {/* CTAs - Mobile */}
+                       <div className="md:hidden pt-8">
+                         {/* CTA Principal - Orçamento */}
+                         <div className="mobile-cta-card bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 rounded-2xl p-6 shadow-2xl mb-4 transform hover:scale-[1.02] transition-all duration-300 active:scale-95">
+                           <div className="flex items-center justify-between mb-3">
+                             <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                               </svg>
+                             </div>
+                             <div className="text-right">
+                               <div className="text-xs text-primary-100 font-medium">RESPOSTA EM 24H</div>
+                               <div className="text-xs text-primary-200">Gratuito</div>
+                             </div>
+                           </div>
+                           <h3 className="text-xl font-bold text-white mb-2">Solicite um orçamento</h3>
+                           <p className="text-primary-100 text-sm mb-4 leading-relaxed">
+                             Receba uma proposta personalizada para suas necessidades de comércio exterior
+                           </p>
+                           <button className="mobile-cta-button w-full bg-white text-primary-600 font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95">
+                             <span className="flex items-center justify-center gap-2">
+                               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                               </svg>
+                               Solicitar agora
+                             </span>
+                           </button>
+                         </div>
+
+                         {/* CTA Secundário - Serviços */}
+                         <div className="mobile-cta-card bg-white border-2 border-primary-200 rounded-2xl p-6 shadow-xl transform hover:scale-[1.02] transition-all duration-300 active:scale-95">
+                           <div className="flex items-center justify-between mb-3">
+                             <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center">
+                               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                               </svg>
+                             </div>
+                             <div className="text-right">
+                               <div className="text-xs text-primary-600 font-medium">9 SERVIÇOS</div>
+                               <div className="text-xs text-gray-500">Especializados</div>
+                             </div>
+                           </div>
+                           <h3 className="text-xl font-bold text-primary-600 mb-2">Conheça nossos serviços</h3>
+                           <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                             Descubra todas as soluções que oferecemos para seu comércio exterior
+                           </p>
+                           <button className="mobile-cta-button w-full bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95">
+                             <span className="flex items-center justify-center gap-2">
+                               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                               </svg>
+                               Ver serviços
+                             </span>
+                           </button>
+                         </div>
                        </div>
               </div>
 

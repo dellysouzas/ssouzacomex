@@ -97,4 +97,36 @@
   .custom-blue-shadow {
     box-shadow: 0 10px 25px -3px rgba(70, 153, 211, 0.3);
   }
+
+  /* Estilos específicos para CTAs mobile */
+  .mobile-cta-card {
+    @apply transform transition-all duration-300;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-cta-card:active {
+    @apply scale-95;
+  }
+
+  .mobile-cta-button {
+    @apply transform transition-all duration-300;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .mobile-cta-button:active {
+    @apply scale-95;
+  }
+
+  /* Melhorias para touch em dispositivos móveis */
+  @media (max-width: 768px) {
+    .mobile-cta-card {
+      @apply cursor-pointer;
+    }
+    
+    .mobile-cta-button {
+      @apply cursor-pointer;
+      min-height: 48px; /* Tamanho mínimo recomendado para touch */
+    }
+  }
 }
