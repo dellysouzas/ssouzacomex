@@ -227,20 +227,20 @@ function App() {
                        </div>
               </div>
 
-              {/* Imagem Hero */}
+              {/* Vídeo Hero */}
               <div className="relative">
                 <div className="relative z-10">
                   <div className="w-full h-96 lg:h-[500px] bg-gradient-to-br from-primary-400 to-primary-600 rounded-3xl shadow-2xl overflow-hidden">
-                    {/* Placeholder para imagem real */}
-                    <div className="w-full h-full bg-gradient-to-br from-blue-400 via-primary-500 to-blue-600 flex items-center justify-center">
-                      <div className="text-center text-white p-8">
-                        <svg className="w-24 h-24 mx-auto mb-4 opacity-80" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
-                        </svg>
-                        <p className="text-lg font-medium">Imagem de Exportação</p>
-                        <p className="text-sm opacity-80">Porto, navios, containers</p>
-                      </div>
-                    </div>
+                    <video 
+                      className="w-full h-full object-cover"
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline
+                    >
+                      <source src="/video-souza.mp4" type="video/mp4" />
+                      Seu navegador não suporta vídeos.
+                    </video>
                   </div>
                 </div>
                 
