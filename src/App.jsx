@@ -96,13 +96,13 @@ function App() {
         <div className="container-custom">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <div className="flex items-center space-x-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <span className="text-white font-bold text-2xl">S</span>
-              </div>
-      <div>
-                <h1 className="text-2xl font-bold text-primary-500">Souza Comex</h1>
-                <p className="text-sm custom-blue font-medium">Comércio Exterior</p>
+            <div className="flex items-center">
+              <div className="w-40 h-40 flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="/Souza Comex Logo 1.png" 
+                  alt="Souza Comex - Despacho Aduaneiro" 
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
 
@@ -391,14 +391,13 @@ function App() {
                            onClick={() => document.getElementById('servico1-details').classList.toggle('hidden')}
                            className="group/btn btn-modern"
                          >
-                           <span>Ver quando contratar</span>
+                           <span>Quando contratar?</span>
                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                            </svg>
                          </button>
                        </div>
                        <div id="servico1-details" className="hidden bg-gradient-to-r from-primary-50 to-secondary-50 p-8 border-t border-primary-200">
-                         <h4 className="font-bold text-primary-700 mb-3 text-lg">Quando contratar?</h4>
                          <p className="text-primary-600 text-base leading-relaxed">
                            Indicado para empresas que realizam exportações regulares e precisam atender às exigências do Portal Único de Comércio Exterior.
                          </p>
@@ -425,14 +424,13 @@ function App() {
                            onClick={() => document.getElementById('servico2-details').classList.toggle('hidden')}
                            className="group/btn btn-modern"
                          >
-                           <span>Ver quando contratar</span>
+                           <span>Quando contratar?</span>
                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                            </svg>
                          </button>
                        </div>
                        <div id="servico2-details" className="hidden bg-gradient-to-r from-primary-50 to-secondary-50 p-8 border-t border-primary-200">
-                         <h4 className="font-bold text-primary-700 mb-3 text-lg">Quando contratar?</h4>
                          <p className="text-primary-600 text-base leading-relaxed">
                            Indicado para empresas que já possuem equipe interna ou parceiro para emitir a DUE, mas precisam de suporte especializado no desembaraço aduaneiro.
                          </p>
@@ -459,14 +457,13 @@ function App() {
                            onClick={() => document.getElementById('servico3-details').classList.toggle('hidden')}
                            className="group/btn btn-modern"
                          >
-                           <span>Ver quando contratar</span>
+                           <span>Quando contratar?</span>
                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                            </svg>
                          </button>
                        </div>
                        <div id="servico3-details" className="hidden bg-gradient-to-r from-primary-50 to-secondary-50 p-8 border-t border-primary-200">
-                         <h4 className="font-bold text-primary-700 mb-3 text-lg">Quando contratar?</h4>
                          <p className="text-primary-600 text-base leading-relaxed">
                            Indicado para empresas que enviam produtos para feiras, exposições, testes ou consertos no exterior e precisam que retornem ao país sem incidência de tributos de importação.
                          </p>
@@ -493,14 +490,13 @@ function App() {
                            onClick={() => document.getElementById('servico4-details').classList.toggle('hidden')}
                            className="group/btn btn-modern"
                          >
-                           <span>Ver quando contratar</span>
+                           <span>Quando contratar?</span>
                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                            </svg>
                          </button>
                        </div>
                        <div id="servico4-details" className="hidden bg-gradient-to-r from-primary-50 to-secondary-50 p-8 border-t border-primary-200">
-                         <h4 className="font-bold text-primary-700 mb-3 text-lg">Quando contratar?</h4>
                          <p className="text-primary-600 text-base leading-relaxed">
                            Indicado para empresas que necessitam de suporte operacional local para embarques e desembarques, especialmente quando não possuem equipe própria no terminal.
                          </p>
@@ -527,14 +523,13 @@ function App() {
                            onClick={() => document.getElementById('servico5-details').classList.toggle('hidden')}
                            className="group/btn btn-modern"
                          >
-                           <span>Ver quando contratar</span>
+                           <span>Quando contratar?</span>
                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                            </svg>
                          </button>
                        </div>
                        <div id="servico5-details" className="hidden bg-gradient-to-r from-primary-50 to-secondary-50 p-8 border-t border-primary-200">
-                         <h4 className="font-bold text-primary-700 mb-3 text-lg">Quando contratar?</h4>
                          <p className="text-primary-600 text-base leading-relaxed">
                            Indicado para empresas que precisam enviar mercadorias de forma rápida, urgente ou com alto valor agregado.
                          </p>
@@ -561,14 +556,13 @@ function App() {
                            onClick={() => document.getElementById('servico6-details').classList.toggle('hidden')}
                            className="group/btn btn-modern"
                          >
-                           <span>Ver quando contratar</span>
+                           <span>Quando contratar?</span>
                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                            </svg>
                          </button>
                        </div>
                        <div id="servico6-details" className="hidden bg-gradient-to-r from-primary-50 to-secondary-50 p-8 border-t border-primary-200">
-                         <h4 className="font-bold text-primary-700 mb-3 text-lg">Quando contratar?</h4>
                          <p className="text-primary-600 text-base leading-relaxed">
                            Indicado para empresas que exportam ou importam para países vizinhos via transporte terrestre, como Argentina, Paraguai, Chile e outros da América do Sul.
                          </p>
@@ -595,14 +589,13 @@ function App() {
                            onClick={() => document.getElementById('servico7-details').classList.toggle('hidden')}
                            className="group/btn btn-modern"
                          >
-                           <span>Ver quando contratar</span>
+                           <span>Quando contratar?</span>
                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                            </svg>
                          </button>
                        </div>
                        <div id="servico7-details" className="hidden bg-gradient-to-r from-primary-50 to-secondary-50 p-8 border-t border-primary-200">
-                         <h4 className="font-bold text-primary-700 mb-3 text-lg">Quando contratar?</h4>
                          <p className="text-primary-600 text-base leading-relaxed">
                            Indicado para empresas que enviam grandes volumes ou cargas de alto peso, buscando otimizar custos logísticos.
                          </p>
@@ -629,14 +622,13 @@ function App() {
                            onClick={() => document.getElementById('servico8-details').classList.toggle('hidden')}
                            className="group/btn btn-modern"
                          >
-                           <span>Ver quando contratar</span>
+                           <span>Quando contratar?</span>
                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                            </svg>
                          </button>
                        </div>
                        <div id="servico8-details" className="hidden bg-gradient-to-r from-primary-50 to-secondary-50 p-8 border-t border-primary-200">
-                         <h4 className="font-bold text-primary-700 mb-3 text-lg">Quando contratar?</h4>
                          <p className="text-primary-600 text-base leading-relaxed">
                            Indicado para empresas industriais ou comerciais que importam insumos para produzir mercadorias destinadas à exportação, visando redução de custos tributários.
                          </p>
@@ -663,14 +655,13 @@ function App() {
                            onClick={() => document.getElementById('servico9-details').classList.toggle('hidden')}
                            className="group/btn btn-modern"
                          >
-                           <span>Ver quando contratar</span>
+                           <span>Quando contratar?</span>
                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                            </svg>
                          </button>
                        </div>
                        <div id="servico9-details" className="hidden bg-gradient-to-r from-primary-50 to-secondary-50 p-8 border-t border-primary-200">
-                         <h4 className="font-bold text-primary-700 mb-3 text-lg">Quando contratar?</h4>
                          <p className="text-primary-600 text-base leading-relaxed">
                            Indicado para empresas que trazem equipamentos, máquinas ou produtos para eventos, feiras, testes, exposições ou obras temporárias no Brasil.
                          </p>
