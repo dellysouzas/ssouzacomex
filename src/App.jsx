@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './fonts.css'
 
 function App() {
@@ -7,6 +7,58 @@ function App() {
   // Estado do formulário wizard
   const [currentStep, setCurrentStep] = useState(1)
   const totalSteps = 5
+  
+  // Função para rolar até o formulário de contato
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contato')
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+  
+  // Função para rolar até a seção de serviços
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('servicos')
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+  
+  // Função para detectar cliques em CTAs de orçamento
+  const handleBudgetCTAClick = (e) => {
+    const buttonText = e.target.textContent || e.target.innerText || ''
+    if (buttonText.toLowerCase().includes('orçamento')) {
+      e.preventDefault()
+      scrollToContact()
+    }
+  }
+  
+  // Adicionar event listener para detectar cliques em CTAs de orçamento e serviços
+  useEffect(() => {
+    const handleClick = (e) => {
+      // Verificar se o clique foi em um botão ou link
+      const target = e.target.closest('button, a')
+      if (target) {
+        const text = target.textContent || target.innerText || ''
+        if (text.toLowerCase().includes('orçamento')) {
+          e.preventDefault()
+          scrollToContact()
+        } else if (text.toLowerCase().includes('serviços') || text.toLowerCase().includes('servicos')) {
+          e.preventDefault()
+          scrollToServices()
+        }
+      }
+    }
+    
+    document.addEventListener('click', handleClick)
+    return () => document.removeEventListener('click', handleClick)
+  }, [])
   
   // Lista de serviços disponíveis
   const services = [
@@ -136,7 +188,10 @@ function App() {
 
             {/* CTA Button */}
             <div className="hidden md:block">
-              <button className="btn-primary">
+              <button 
+                className="btn-primary"
+                onClick={scrollToContact}
+              >
                 Solicitar Orçamento
               </button>
             </div>
@@ -162,7 +217,10 @@ function App() {
                 <a href="#diferenciais" className="text-primary-500 hover:text-primary-600 transition-colors font-medium py-2">Diferenciais</a>
                 <a href="#depoimentos" className="text-primary-500 hover:text-primary-600 transition-colors font-medium py-2">Depoimentos</a>
                 <a href="#contato" className="text-primary-500 hover:text-primary-600 transition-colors font-medium py-2">Contato</a>
-                <button className="btn-primary w-full mt-4">
+                <button 
+                  className="btn-primary w-full mt-4"
+                  onClick={scrollToContact}
+                >
                   Solicitar Orçamento
                 </button>
               </nav>
@@ -206,7 +264,10 @@ function App() {
                 
                                        {/* CTAs - Desktop */}
                                        <div className="hidden md:flex flex-col sm:flex-row gap-4 pt-6">
-                         <button className="group relative overflow-hidden bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold text-base px-6 py-3 rounded-xl shadow-lg hover:shadow-primary-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                         <button 
+                           className="group relative overflow-hidden bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold text-base px-6 py-3 rounded-xl shadow-lg hover:shadow-primary-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
+                           onClick={scrollToContact}
+                         >
                            <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                            <span className="relative flex items-center gap-2">
                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -216,7 +277,10 @@ function App() {
                            </span>
                          </button>
                          
-                         <button className="group relative overflow-hidden bg-white text-primary-600 font-semibold text-base px-6 py-3 rounded-xl shadow-lg border-2 border-primary-200 hover:border-primary-300 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                         <button 
+                           className="group relative overflow-hidden bg-white text-primary-600 font-semibold text-base px-6 py-3 rounded-xl shadow-lg border-2 border-primary-200 hover:border-primary-300 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                           onClick={scrollToServices}
+                         >
                            <div className="absolute inset-0 custom-blue-bg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                            <span className="relative flex items-center gap-2 group-hover:text-white transition-colors duration-300">
                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -246,7 +310,10 @@ function App() {
                            <p className="text-primary-100 text-sm mb-4 leading-relaxed">
                              Receba uma proposta personalizada para suas necessidades de comércio exterior
                            </p>
-                           <button className="mobile-cta-button w-full bg-white text-primary-600 font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95">
+                           <button 
+                             className="mobile-cta-button w-full bg-white text-primary-600 font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95"
+                             onClick={scrollToContact}
+                           >
                              <span className="flex items-center justify-center gap-2">
                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -273,7 +340,10 @@ function App() {
                            <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                              Descubra todas as soluções que oferecemos para seu comércio exterior
                            </p>
-                           <button className="mobile-cta-button w-full bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95">
+                           <button 
+                             className="mobile-cta-button w-full bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95"
+                             onClick={scrollToServices}
+                           >
                              <span className="flex items-center justify-center gap-2">
                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -923,7 +993,10 @@ function App() {
                 <p className="text-primary-100 text-lg mb-6 max-w-2xl mx-auto">
                   Junte-se aos clientes que já transformaram suas operações de comércio exterior com a Souza Comex
                 </p>
-                <button className="group relative overflow-hidden bg-white text-primary-600 font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-white/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                <button 
+                  className="group relative overflow-hidden bg-white text-primary-600 font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-white/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
+                  onClick={scrollToContact}
+                >
                   <div className="absolute inset-0 bg-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative flex items-center gap-3">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
