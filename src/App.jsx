@@ -1498,26 +1498,26 @@ function App() {
       {/* Footer */}
       <footer className="bg-gradient-to-br from-primary-600 to-primary-800 text-white">
         {/* Footer Principal */}
-        <div className="container-custom py-16">
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
+        <div className="container-custom py-12 md:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {/* Coluna 1: Descrição */}
-            <div className="lg:col-span-1">
-              <h3 className="text-2xl font-bold mb-4 text-white">
+            <div className="sm:col-span-2 lg:col-span-1 text-center sm:text-left">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
                 Souza Comex
               </h3>
-              <p className="text-primary-100 leading-relaxed mb-6">
+              <p className="text-primary-100 leading-relaxed mb-6 text-sm md:text-base">
                 Mais de 23 anos de experiência no comércio exterior, oferecendo soluções completas e personalizadas para suas operações de exportação e importação.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex justify-center sm:justify-start space-x-4">
                 {/* WhatsApp */}
                 <a 
                   href="https://wa.me/5581985601063" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
+                  className="w-10 h-10 md:w-12 md:h-12 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                   aria-label="WhatsApp"
                 >
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
                   </svg>
                 </a>
@@ -1527,10 +1527,10 @@ function App() {
                   href="https://www.instagram.com/souza_comex/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
+                  className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                   aria-label="Instagram"
                 >
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M16.98 0a6.9 6.9 0 0 1 5.08 1.98A6.94 6.94 0 0 1 24 7.02v9.96c0 2.08-.68 3.87-1.98 5.13A7.14 7.14 0 0 1 16.94 24H7.06a7.06 7.06 0 0 1-5.03-1.89A6.96 6.96 0 0 1 0 16.94V7.02C0 2.8 2.8 0 7.02 0h9.96zm.05 2.23H7.06c-1.45 0-2.7.43-3.53 1.25a4.82 4.82 0 0 0-1.02 6.06l1.42 4.4a5.07 5.07 0 0 0 2.42 2.66l3.57 1.28c.47.16.98.23 1.48.23 1.44 0 2.7-.43 3.53-1.25.33-.33.58-.7.75-1.1l.92-2.85a4.6 4.6 0 0 0 .1-.9c0-.06-.02-.12-.04-.18l-1.42-4.4a5.08 5.08 0 0 0-2.42-2.66l-3.57-1.28c-.47-.16-.98-.23-1.48-.23zM12 5.76c1.54 0 2.8 1.26 2.8 2.8s-1.26 2.8-2.8 2.8-2.8-1.26-2.8-2.8 1.26-2.8 2.8-2.8zM6.24 16.9c-.32-.79-.49-1.64-.49-2.56 0-1.42.5-2.6 1.47-3.37.97-.77 2.2-1.16 3.68-1.16 1.42 0 2.6.5 3.37 1.47.77.97 1.16 2.2 1.16 3.68 0 .92-.17 1.77-.49 2.56l-.03.1c-.4.98-.98 1.77-1.73 2.35-.75.58-1.62.87-2.6.87-.98 0-1.85-.29-2.6-.87-.75-.58-1.33-1.37-1.73-2.35l-.03-.1z"/>
                   </svg>
                 </a>
@@ -1538,47 +1538,47 @@ function App() {
             </div>
 
             {/* Coluna 2: Serviços */}
-            <div>
-              <h4 className="text-xl font-bold mb-6 text-white">Nossos Serviços</h4>
-              <ul className="space-y-3 text-primary-100">
-                <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center sm:text-left">
+              <h4 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">Nossos Serviços</h4>
+              <ul className="space-y-2 md:space-y-3 text-primary-100 text-sm md:text-base">
+                <li className="flex items-center gap-2 justify-center sm:justify-start">
+                  <svg className="w-4 h-4 text-primary-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Desembaraço Aduaneiro
+                  <span>Desembaraço Aduaneiro</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <li className="flex items-center gap-2 justify-center sm:justify-start">
+                  <svg className="w-4 h-4 text-primary-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Exportação Temporária
+                  <span>Exportação Temporária</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <li className="flex items-center gap-2 justify-center sm:justify-start">
+                  <svg className="w-4 h-4 text-primary-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Handling
+                  <span>Handling</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <li className="flex items-center gap-2 justify-center sm:justify-start">
+                  <svg className="w-4 h-4 text-primary-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Fretes Internacionais
+                  <span>Fretes Internacionais</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <li className="flex items-center gap-2 justify-center sm:justify-start">
+                  <svg className="w-4 h-4 text-primary-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Drawback
+                  <span>Drawback</span>
                 </li>
               </ul>
             </div>
 
             {/* Coluna 3: Contato */}
-            <div>
-              <h4 className="text-xl font-bold mb-6 text-white">Informações de Contato</h4>
-              <div className="space-y-4 text-primary-100">
-                <div className="flex items-start gap-3">
+            <div className="text-center sm:text-left">
+              <h4 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">Informações de Contato</h4>
+              <div className="space-y-3 md:space-y-4 text-primary-100 text-sm md:text-base">
+                <div className="flex items-start gap-3 justify-center sm:justify-start">
                   <svg className="w-5 h-5 text-primary-300 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -1590,7 +1590,7 @@ function App() {
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 justify-center sm:justify-start">
                   <svg className="w-5 h-5 text-primary-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
                   </svg>
@@ -1607,7 +1607,7 @@ function App() {
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 justify-center sm:justify-start">
                   <svg className="w-5 h-5 text-primary-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -1625,9 +1625,9 @@ function App() {
             </div>
 
             {/* Coluna 4: Empresa */}
-            <div>
-              <h4 className="text-xl font-bold mb-6 text-white">Empresa</h4>
-              <div className="space-y-4 text-primary-100">
+            <div className="text-center sm:text-left">
+              <h4 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">Empresa</h4>
+              <div className="space-y-3 md:space-y-4 text-primary-100 text-sm md:text-base">
                 <div>
                   <p className="font-medium">Razão Social</p>
                   <p>Souza Comex</p>
