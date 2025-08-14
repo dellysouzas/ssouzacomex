@@ -384,16 +384,11 @@ function App() {
                      <div className="relative">
                        <div className="relative z-10">
                          <div className="w-full h-96 lg:h-[500px] bg-gradient-to-br from-primary-400 to-primary-600 rounded-3xl shadow-2xl overflow-hidden">
-                           {/* Placeholder para imagem real */}
-                           <div className="w-full h-full bg-gradient-to-br from-blue-400 via-primary-500 to-blue-600 flex items-center justify-center">
-                             <div className="text-center text-white p-8">
-                               <svg className="w-24 h-24 mx-auto mb-4 opacity-80" fill="currentColor" viewBox="0 0 24 24">
-                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                               </svg>
-                               <p className="text-lg font-medium">Imagem de Credibilidade</p>
-                               <p className="text-sm opacity-80">Profissionalismo e confiança</p>
-                             </div>
-                           </div>
+                           <img 
+                             src="/sil no escritorio.png" 
+                             alt="Silvana Nascimento - Fundadora da Souza Comex" 
+                             className="w-full h-full object-cover"
+                           />
                          </div>
                        </div>
                        
