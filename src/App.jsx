@@ -17,6 +17,8 @@ function App() {
         block: 'start'
       })
     }
+    // Fechar menu mobile após clicar
+    setIsMenuOpen(false)
   }
   
   // Função para rolar até a seção de serviços
@@ -28,6 +30,13 @@ function App() {
         block: 'start'
       })
     }
+    // Fechar menu mobile após clicar
+    setIsMenuOpen(false)
+  }
+
+  // Função para fechar menu ao clicar em um link
+  const handleMenuLinkClick = () => {
+    setIsMenuOpen(false)
   }
   
   // Função para detectar cliques em CTAs de orçamento
@@ -59,6 +68,18 @@ function App() {
     document.addEventListener('click', handleClick)
     return () => document.removeEventListener('click', handleClick)
   }, [])
+
+  // Fechar menu ao redimensionar a tela para desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && isMenuOpen) {
+        setIsMenuOpen(false)
+      }
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [isMenuOpen])
   
   // Lista de serviços disponíveis
   const services = [
@@ -146,10 +167,10 @@ function App() {
       {/* Header */}
       <header className="bg-white/95 backdrop-blur-md shadow-xl border-b border-secondary-200/50 fixed w-full top-0 z-50">
         <div className="container-custom">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="w-40 h-40 flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
                 <img 
                   src="/Souza Comex Logo 1.png" 
                   alt="Souza Comex - Despacho Aduaneiro" 
@@ -159,7 +180,7 @@ function App() {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex space-x-10">
+            <nav className="hidden lg:flex space-x-8 xl:space-x-10">
               <a href="#inicio" className="text-primary-500 hover:text-primary-600 transition-all duration-300 font-medium relative group">
                 Início
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover:w-full"></span>
@@ -189,7 +210,7 @@ function App() {
             {/* CTA Button */}
             <div className="hidden md:block">
               <button 
-                className="btn-primary"
+                className="btn-primary text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
                 onClick={scrollToContact}
               >
                 Solicitar Orçamento
@@ -198,8 +219,10 @@ function App() {
 
             {/* Mobile Menu Button */}
             <button 
-              className="lg:hidden p-2 hover:bg-primary-50 rounded-lg transition-colors"
+              className="lg:hidden p-2 hover:bg-primary-50 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Abrir menu"
+              aria-expanded={isMenuOpen}
             >
               <svg className="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -208,29 +231,92 @@ function App() {
           </div>
 
           {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="lg:hidden py-6 border-t border-secondary-200 bg-white/95 backdrop-blur-md">
-              <nav className="flex flex-col space-y-4">
-                <a href="#inicio" className="text-primary-500 hover:text-primary-600 transition-colors font-medium py-2">Início</a>
-                <a href="#sobre" className="text-primary-500 hover:text-primary-600 transition-colors font-medium py-2">Sobre nós</a>
-                <a href="#servicos" className="text-primary-500 hover:text-primary-600 transition-colors font-medium py-2">Serviços</a>
-                <a href="#diferenciais" className="text-primary-500 hover:text-primary-600 transition-colors font-medium py-2">Diferenciais</a>
-                <a href="#depoimentos" className="text-primary-500 hover:text-primary-600 transition-colors font-medium py-2">Depoimentos</a>
-                <a href="#contato" className="text-primary-500 hover:text-primary-600 transition-colors font-medium py-2">Contato</a>
-                <button 
-                  className="btn-primary w-full mt-4"
-                  onClick={scrollToContact}
+          <div className={`lg:hidden overflow-hidden mobile-menu-transition ${
+            isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}>
+            <div className="py-4 sm:py-6 border-t border-secondary-200 bg-white/95 backdrop-blur-md">
+              <nav className="flex flex-col space-y-3 sm:space-y-4">
+                <a 
+                  href="#inicio" 
+                  className="mobile-menu-item text-primary-500 hover:text-primary-600 transition-colors duration-300 font-medium py-2 px-4 rounded-lg hover:bg-primary-50 flex items-center"
+                  onClick={handleMenuLinkClick}
                 >
-                  Solicitar Orçamento
-                </button>
+                  <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                  Início
+                </a>
+                <a 
+                  href="#sobre" 
+                  className="mobile-menu-item text-primary-500 hover:text-primary-600 transition-colors duration-300 font-medium py-2 px-4 rounded-lg hover:bg-primary-50 flex items-center"
+                  onClick={handleMenuLinkClick}
+                >
+                  <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Sobre nós
+                </a>
+                <a 
+                  href="#servicos" 
+                  className="mobile-menu-item text-primary-500 hover:text-primary-600 transition-colors duration-300 font-medium py-2 px-4 rounded-lg hover:bg-primary-50 flex items-center"
+                  onClick={handleMenuLinkClick}
+                >
+                  <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  </svg>
+                  Serviços
+                </a>
+                <a 
+                  href="#diferenciais" 
+                  className="mobile-menu-item text-primary-500 hover:text-primary-600 transition-colors duration-300 font-medium py-2 px-4 rounded-lg hover:bg-primary-50 flex items-center"
+                  onClick={handleMenuLinkClick}
+                >
+                  <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  Diferenciais
+                </a>
+                <a 
+                  href="#depoimentos" 
+                  className="mobile-menu-item text-primary-500 hover:text-primary-600 transition-colors duration-300 font-medium py-2 px-4 rounded-lg hover:bg-primary-50 flex items-center"
+                  onClick={handleMenuLinkClick}
+                >
+                  <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.017 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                  Depoimentos
+                </a>
+                <a 
+                  href="#contato" 
+                  className="mobile-menu-item text-primary-500 hover:text-primary-600 transition-colors duration-300 font-medium py-2 px-4 rounded-lg hover:bg-primary-50 flex items-center"
+                  onClick={handleMenuLinkClick}
+                >
+                  <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  Contato
+                </a>
+                
+                {/* CTA Mobile */}
+                <div className="pt-2 border-t border-secondary-200">
+                  <button 
+                    className="btn-primary w-full text-center flex items-center justify-center gap-2"
+                    onClick={scrollToContact}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Solicitar Orçamento
+                  </button>
+                </div>
               </nav>
             </div>
-          )}
+          </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="pt-20">
+      <main className="pt-16 sm:pt-20">
         {/* Seção 1: Início */}
         <section id="inicio" className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50">
           <div className="container-custom">

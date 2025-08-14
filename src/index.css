@@ -129,4 +129,76 @@
       min-height: 48px; /* Tamanho mínimo recomendado para touch */
     }
   }
+
+  /* Estilos específicos para o menu mobile */
+  .mobile-menu-overlay {
+    @apply fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden;
+  }
+
+  .mobile-menu-container {
+    @apply fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50;
+  }
+
+  .mobile-menu-container.closed {
+    @apply translate-x-full;
+  }
+
+  .mobile-menu-container.open {
+    @apply translate-x-0;
+  }
+
+  /* Animações para o menu mobile */
+  .mobile-menu-item {
+    @apply transform transition-all duration-200;
+  }
+
+  .mobile-menu-item:hover {
+    @apply translate-x-2;
+  }
+
+
+
+  /* Responsividade aprimorada para diferentes tamanhos de tela */
+  @media (max-width: 640px) {
+    .mobile-menu-container {
+      @apply w-full max-w-none;
+    }
+    
+    .mobile-menu-item {
+      @apply text-base py-3;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 1023px) {
+    .mobile-menu-container {
+      @apply w-80;
+    }
+  }
+
+  /* Melhorias para acessibilidade */
+  .mobile-menu-button:focus {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+  }
+
+  .mobile-menu-item:focus {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 rounded-lg;
+  }
+
+  /* Transições suaves para todos os elementos do menu */
+  .mobile-menu-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Melhorias para o backdrop do menu */
+  .mobile-menu-backdrop {
+    @apply fixed inset-0 bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-300;
+  }
+
+  .mobile-menu-backdrop.closed {
+    @apply opacity-0 pointer-events-none;
+  }
+
+  .mobile-menu-backdrop.open {
+    @apply opacity-100;
+  }
 }
