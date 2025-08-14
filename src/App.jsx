@@ -1524,7 +1524,7 @@ function App() {
                 
                 {/* Instagram */}
                 <a 
-                  href="https://www.instagram.com/silvanasouzanascimento/" 
+                  href="https://www.instagram.com/souza_comex/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
