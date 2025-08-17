@@ -1,15 +1,338 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo colorida resumida.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Souza Comex - Despacho Aduaneiro</title>
-    <meta name="description" content="Soluções completas para exportação e importação. Mais de 23 anos de experiência no comércio exterior." />
-    <meta name="keywords" content="despacho aduaneiro, comércio exterior, exportação, importação, desembaraço, frete internacional" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo Lead - Souza Comex</title>
+  <style>
+    body {
+      font-family: 'Satoshi', 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      color: #003366;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .email-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0, 51, 102, 0.1), 0 10px 10px -5px rgba(0, 51, 102, 0.04);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #003366 0%, #4699d3 50%, #66a3ff 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #e6f0ff 0%, #cce0ff 50%, #99c2ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header p {
+      margin: 10px 0 0 0;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 40px 30px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #003366;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e6f0ff;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #003366, #4699d3);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .info-item {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #003366;
+      transition: all 0.3s ease;
+    }
+
+    .info-item:hover {
+      background: #f0f8ff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 51, 102, 0.1);
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: #374151;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .info-value {
+      color: #1f2937;
+      font-size: 16px;
+      word-break: break-word;
+    }
+
+    .info-value:empty::after {
+      content: 'Não informado';
+      color: #9ca3af;
+      font-style: italic;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e6f0ff 100%);
+      border: 1px solid #cce0ff;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+
+    .highlight-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #003366;
+      margin-bottom: 15px;
+    }
+
+    .highlight-content {
+      color: #374151;
+      line-height: 1.7;
+    }
+
+    .footer {
+      background: #f1f5f9;
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer p {
+      margin: 0;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .timestamp {
+      background: #f8fafc;
+      padding: 15px 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .timestamp .label {
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 5px;
+    }
+
+    .timestamp .value {
+      color: #003366;
+      font-weight: 500;
+    }
+
+    .service-tag {
+      display: inline-block;
+      background: #003366;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin: 2px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header,
+      .content {
+        padding: 20px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="email-container">
+    <!-- Header -->
+    <div class="header">
+      <h1>✨ Novo Lead Recebido</h1>
+      <p>Formulário de contato - Souza Comex</p>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Informações da Empresa -->
+      <div class="section">
+        <h2 class="section-title">🏢 Informações da Empresa</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Nome da Empresa</div>
+            <div class="info-value">{{$json.companyName}}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">CNPJ</div>
+            <div class="info-value">{{$json.cnpj}}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Cidade</div>
+            <div class="info-value">{{$json.city}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Informações de Contato -->
+      <div class="section">
+        <h2 class="section-title">👤 Informações de Contato</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Nome do Contato</div>
+            <div class="info-value">{{$json.contactName}}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Email</div>
+            <div class="info-value">{{$json.email}}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Telefone</div>
+            <div class="info-value">{{$json.phone}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Serviços Selecionados -->
+      <div class="section">
+        <h2 class="section-title">🔧 Serviços Selecionados</h2>
+        <div class="info-grid">
+          <div class="info-item full-width">
+            <div class="info-label">Serviços Principais</div>
+            <div class="info-value">
+              {{#if $json.selectedServices}}
+              {{#each $json.selectedServices}}
+              <span class="service-tag">{{this}}</span>
+              {{/each}}
+              {{else}}
+              <span class="service-tag">Nenhum serviço selecionado</span>
+              {{/if}}
+            </div>
+          </div>
+          <div class="info-item full-width">
+            <div class="info-label">Serviços Adicionais</div>
+            <div class="info-value">{{$json.additionalServices}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalhes da Operação -->
+      <div class="section">
+        <h2 class="section-title">📋 Detalhes da Operação</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Tipo de Operação</div>
+            <div class="info-value">{{$json.operationType}}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Frequência</div>
+            <div class="info-value">{{$json.frequency}}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Orçamento</div>
+            <div class="info-value">{{$json.budget}}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Prazo</div>
+            <div class="info-value">{{$json.timeline}}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Produtos</div>
+            <div class="info-value">{{$json.products}}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Destinos</div>
+            <div class="info-value">{{$json.destinations}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desafios em destaque -->
+      <div class="highlight-box">
+        <div class="highlight-title">🎯 Desafios Identificados</div>
+        <div class="highlight-content">{{$json.challenges}}</div>
+      </div>
+
+      <!-- Observações em destaque -->
+      <div class="highlight-box">
+        <div class="highlight-title">📝 Observações</div>
+        <div class="highlight-content">{{$json.observations}}</div>
+      </div>
+
+      <!-- Timestamp e Origem -->
+      <div class="timestamp">
+        <div class="label">🕒 Data/Hora do Envio</div>
+        <div class="value">{{$json.timestamp}}</div>
+      </div>
+
+      <div class="timestamp">
+        <div class="label">🌐 Origem</div>
+        <div class="value">{{$json.source}}</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>🚢 <strong>Souza Comex</strong> - Especialistas em Comércio Exterior</p>
+      <p>Este email foi gerado automaticamente pelo sistema de formulários da Souza Comex</p>
+    </div>
+  </div>
+</body>
+
 </html>
